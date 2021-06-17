@@ -48,10 +48,21 @@ public class App {
 
     public static void main(String[] args) {
         String height = getHeight();
+        while (isNumerical(height) == false)
+            height = getHeight();
+
         String weight = getWeight();
+        while (isNumerical(weight) == false)
+            weight = getWeight();
+
         String bmi = calcBMI(height, weight);
         String outputString = generateOutput(bmi);
         System.out.println(outputString);
+    }
+
+    public static boolean isNumerical(String input) {
+        String regex = "[0-9]+";
+        return input.matches(regex);
     }
 
     public static int withinRange(double bmi) {
